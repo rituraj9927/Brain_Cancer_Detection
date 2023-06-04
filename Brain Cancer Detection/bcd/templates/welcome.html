@@ -1,0 +1,182 @@
+{% load static %}
+<html>
+
+<head>
+    <title>Brain Cancer Detection</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #1c7fdd;
+        }
+
+        .predict-form {
+            width: 600px;
+            background: #ffff;
+            padding: 50px;
+            margin: 100px auto;
+            border-radius: 30px;
+            position: relative;
+        }
+
+        .form-title h1 {
+            color: rgb(82, 85, 82);
+            letter-spacing: 5px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .scan {
+            margin-left: 35px;
+        }
+
+        .form,
+        .form-items {
+            width: 100%;
+        }
+
+        .form-items .input {
+            width: 100%;
+            margin-bottom: 12px;
+            padding: 15px 40px;
+            box-sizing: border-box;
+            background: #dce0e4;
+            border: 0px;
+            outline: none;
+            border-radius: 30px;
+        }
+
+        .form-items .input.message {
+            height: 125px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            padding: 15px 15px;
+            resize: none;
+        }
+
+        .btn {
+            background: #4d2e96;
+            text-align: center;
+            color: #ffff;
+            padding: 15px;
+            border-radius: 25px;
+
+        }
+
+        .btn .fas {
+            margin-left: 10px;
+            font-size: 12px;
+        }
+
+        .form-items {
+            position: relative;
+        }
+
+        .form-items .fas {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #9a99aa;
+        }
+
+
+
+        .active {
+            background-color: #04AA6D;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgba(151, 14, 14, 0.6);
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ul>
+        <li><a href="{% url 'index' %}">Brain Cancer Detection Using Deep Learning</a></li>
+
+        <li style="float:right"><a class="active" href="{% url 'accounts:logout' %}">Logout</a></li>
+        <li style="float:right"><a>Welcome: {{user.username}}</a></li>
+    </ul>
+
+
+    <div class="predict-form">
+        <div class="form-title">
+            <h1>Brain Cancer Detection</h1>
+        </div>
+
+        <div class="form">
+
+
+            <form class="container mt-5" id="form1" name="form1" method="POST" enctype="multipart/form-data"
+                action="/cancer_detection/">
+                {% csrf_token %}
+
+                {% if data == 99%}
+                <div class="form-row">
+                    <img src="{% static 'input.jpg' %}" class="scan" alt="input mri" height=330 width=400>
+                </div>
+
+                {% else %}
+                <div class="form-row">
+                    <img src="{% static '\imgs\scan.gif' %}" class="scan" alt="mri scan" height=330 width=400>
+                </div>
+                {% endif%}
+
+                <br>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="logo">Upload MRI</label>
+                        <input type="file" class="form-control" name="logo" required>
+                    </div>
+                </div>
+
+        </div>
+        <div align="center">
+            <input type="submit" value="Submit" class="btn btn-primary mt-1" style="width: 200px;">
+        </div>
+        </form>
+        <br>
+        <center>
+            <h1 style="color:{{res_color}};"><b>{{ result }}</b></h1>
+        </center>
+
+    </div>
+
+</body>
+
+</html>

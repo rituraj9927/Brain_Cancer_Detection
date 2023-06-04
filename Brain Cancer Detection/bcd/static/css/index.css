@@ -1,0 +1,25 @@
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.hero-img {
+    width: 60%;
+}
+
+.btn-signup {
+    color: white;
+    background-color: darkblue;
+}
+
+span {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.btn {
+    padding-left: 25px;
+    padding-right: 25px;
+}

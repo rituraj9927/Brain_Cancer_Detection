@@ -1,0 +1,19 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+
+<h1>Log In</h1>
+<div class="jumbotron">
+
+    {% if form.errors %}
+    <p>Your username and password didn't match! Please try again.</p>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" class="btn btn-default" value="Login">
+    </form>
+</div>
+
+{% endblock %}

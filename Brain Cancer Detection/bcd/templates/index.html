@@ -1,0 +1,21 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="hero">
+    <div class="hero-info">
+        <h2>Welcome</h2>
+        <p class="lead">Project by Rituraj.</p>
+        <p class="lead">To continue further,</p>
+        <div>
+            <a href="{% url 'accounts:login' %}" class="btn btn-primary">Login</a>
+            <span> or </span>
+            <a href="{% url 'accounts:signup' %}" class="btn btn-signup">Sign Up</a>
+        </div>
+    </div>
+    <img class="hero-img" src="{% static 'imgs/med_img_1.png' %}" alt="">
+</div>
+
+{% endblock %}
