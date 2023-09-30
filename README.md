@@ -5,7 +5,7 @@ Subject Has a Cancer Or Not Based On Brain MRI Scan Image With High Accuracy.
 Model Accuracy-99.12%
 
 # Tech Used:
-HTML,CSS, Javascript, Bootstrap,Django,Python,SQLite Algorithm- Convolution Neural Network(CNN)
+HTML,CSS, Javascript, Bootstrap,Django,Python,SQLite, Algorithm- Convolution Neural Network(CNN)
 
 # Open command prompt and enter the following Commands:
  1. pip install django
